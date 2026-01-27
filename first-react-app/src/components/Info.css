@@ -1,0 +1,54 @@
+.avatar-img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.info-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 25px;
+  color: #FFFFFF;
+  margin: 20px 0 0 0;
+}
+
+.info-subtitle {
+  text-align: center;
+  font-weight: 400;
+  font-size: 12.8px;
+  color: #F3BF99;
+  margin: 0 0 20px 0;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  color: #374151;
+}
+
+.link-btn {
+  width: 115px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.link-btn.email {
+  background-color: #FFFFFF;
+  border: 1px solid #D1D5DB;
+}
+
+.link-btn.facebook {
+  background-color: #5093E2;
+}
+
+.link-btn a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+}

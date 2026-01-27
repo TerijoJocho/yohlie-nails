@@ -1,0 +1,9 @@
+footer {
+    background-color: #161619;
+    border-radius: 0 0 10px 10px;
+    color: #918E9B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
