@@ -4,13 +4,16 @@ export default function AdminSlots() {
     const [slots, setSlots] = useState([]);
 
     function fetchSlots() {
+        const token = localStorage.getItem("adminToken");
+
         fetch("http://localhost:3001/admin/slots", {
-            headers: { "x-admin-token": import.meta.env.VITE_ADMIN_TOKEN }
+            method: "GET",
+            headers: { "Authorization": `Bearer ${token}`}
         })
             .then(res => {
                 if (!res.ok)
                     throw new Error(`HTTP ${res.status}`);
-                    return res.json();
+                return res.json();
             })
             .then(data => setSlots(data))
             .catch(err => console.log("Erreur de fetch:", err))
@@ -36,7 +39,7 @@ export default function AdminSlots() {
                         <ul>
                             {groupedSlots[date].map(slot => {
                                 return (
-                                    <li key={slot.id}>{slot.time}</li>
+                                    <button key={slot.id}>{slot.time}</button>
                                 )
                             })}
                         </ul>

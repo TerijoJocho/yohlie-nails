@@ -1,10 +1,13 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import "./db/init.js";
+
 import slotsRoutes from "./routes/slots.js";
 import booksRoutes from "./routes/bookingSlots.js";
 import adminSlotsRoutes from "./routes/adminSlots.js"
-import { adminAuth } from "./middlewares/adminAuth.js";
+import adminAuthRoutes from "./routes/adminAuth.js"
+import {adminAuth} from "./middlewares/adminAuth.js";
 
 //lit le .env et ajoute ses variable a process.env
 dotenv.config();
@@ -29,6 +32,7 @@ app.get("/", (req, res) => {
 app.use("/slots", slotsRoutes);
 app.use("/book", booksRoutes);
 app.use("/admin/slots", adminAuth, adminSlotsRoutes);
+app.use("/admin", adminAuthRoutes);
 
 // Lancement du serveur
 app.listen(PORT, () => {

@@ -1,29 +1,29 @@
-import AddSlot from "../components/AddSlot.jsx"
+import { useState } from "react";
+import AdminLogin from "../components/AdminLogin.jsx";
+import AddSlot from "../components/AdminAddSlot.jsx"
 import WelcomeAdmin from "../components/WelcomeAdmin.jsx"
-import AdminSlots from "../components/AdminSlots.jsx"
+import GetSlots from "../components/AdminGetSlots.jsx"
+import DeleteSlot from "../components/AdminDeleteSlot.jsx"
+import AdminLogout from "../components/AdminLogout.jsx"
 
-function DeleteSlot() {
-  const handleDeleteSlotClick = () => {
-    for (let i = 1; i < 30; i++)
-    {
-      fetch(`http://localhost:3001/slots/${i}`, {method: "DELETE"})
-        .then(res => res.json())
-        .then(data => console.log(data))
-    }
-  };
 
-  return (
-    <button onClick={handleDeleteSlotClick}>Delete a slot</button>
-  )
-}
 
 export default function Admin() {
+  const [isLogged, setIsLogged] = useState(!!localStorage.getItem("adminToken"));
+
     return (
         <>
-            <WelcomeAdmin />
-            <AdminSlots />
-            <AddSlot />
-            {/* <DeleteSlot /> */}
+            {!isLogged ? (
+              <AdminLogin onLogin={() => setIsLogged(true)} />
+            ) : (
+              <>
+                <WelcomeAdmin />
+                <GetSlots />
+                <AddSlot />
+                <DeleteSlot />
+                <AdminLogout onLogout={() => setIsLogged(false)}/>
+              </>
+            )}
         </>
-    )
+    );
 }

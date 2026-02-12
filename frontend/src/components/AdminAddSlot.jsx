@@ -6,12 +6,13 @@ export default function AddSlot() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        const token = localStorage.getItem("adminToken");
 
         fetch("http://localhost:3001/admin/slots", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "x-admin-token": import.meta.env.VITE_ADMIN_TOKEN
+                "Authorization": `Bearer ${token}`,
             },
             body: JSON.stringify({
                 date,
