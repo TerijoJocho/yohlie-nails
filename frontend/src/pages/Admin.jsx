@@ -1,29 +1,28 @@
 import { useState } from "react";
-import AdminLogin from "../components/AdminLogin.jsx";
-import AddSlot from "../components/AdminAddSlot.jsx"
-import WelcomeAdmin from "../components/WelcomeAdmin.jsx"
-import GetSlots from "../components/AdminGetSlots.jsx"
-import DeleteSlot from "../components/AdminDeleteSlot.jsx"
-import AdminLogout from "../components/AdminLogout.jsx"
-
-
-
+import AdminLogin from "../components/admin/AdminLogin.jsx";
+import AddSlot from "../components/admin/AdminAddSlot.jsx";
+import WelcomeAdmin from "../components/admin/WelcomeAdmin.jsx";
+import GetSlots from "../components/admin/AdminGetSlots.jsx";
+import DeleteSlot from "../components/admin/AdminDeleteSlot.jsx";
+import AdminLogout from "../components/admin/AdminLogout.jsx";
 export default function Admin() {
-  const [isLogged, setIsLogged] = useState(!!localStorage.getItem("adminToken"));
+  const [isLogged, setIsLogged] = useState(
+    !!localStorage.getItem("adminToken"),
+  );
 
-    return (
+  return (
+    <div className="min-h-screen flex flex-col justify-center items-center">
+      {!isLogged ? (
+        <AdminLogin onLogin={() => setIsLogged(true)} />
+      ) : (
         <>
-            {!isLogged ? (
-              <AdminLogin onLogin={() => setIsLogged(true)} />
-            ) : (
-              <>
-                <WelcomeAdmin />
-                <GetSlots />
-                <AddSlot />
-                <DeleteSlot />
-                <AdminLogout onLogout={() => setIsLogged(false)}/>
-              </>
-            )}
+          <WelcomeAdmin />
+          <GetSlots />
+          <AddSlot />
+          <DeleteSlot />
+          <AdminLogout onLogout={() => setIsLogged(false)} />
         </>
-    );
+      )}
+    </div>
+  );
 }

@@ -7,10 +7,10 @@ import { sendBookingEmail } from "../services/mail.js";
 
 //pour reserver un slot
 export async function postBook(req, res) {
-  const { id, client_name, client_email } = req.body;
+  const { id, client_name, client_email, client_choices } = req.body;
   console.log(`Début des emails`)
 
-  if (!id || !client_name || !client_email) {
+  if (!id || !client_name || !client_email || !client_choices) {
     return res.status(400).json({ error: "Tous les champs sont requis" });
   }
 
@@ -29,8 +29,19 @@ export async function postBook(req, res) {
     WHERE id = ?
   `).run(client_name, client_email, id);
 
+    function formatDate(strDate) {
+        const date = new Date(strDate);
+        return (
+            new Intl.DateTimeFormat('fr-FR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            }).format(date)
+        );
+    }
+
   try {
-      await sendBookingEmail({client_name, client_email, date: slot.date, time: slot.time});
+      await sendBookingEmail({client_name, client_email, client_choices, date: formatDate(slot.date), time: slot.time});
       console.log("Emails envoyés avec succès");
     } catch (err) {
       console.log("Erreur email de confirmation:", err);

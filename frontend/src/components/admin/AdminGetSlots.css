@@ -1,0 +1,25 @@
+.agenda-paragraph {
+    padding: 20px 12px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.slots-li {
+    list-style: none;
+    border: 1px solid white;
+    border-radius: 4px;
+    background-color: aliceblue;
+    padding: 2px;
+    margin-top: 4px;
+}
+
+.slots-date {
+    margin: 0 0 6px 12px;
+    border: 1px solid white;
+
+}
+
+.slots-container {
+    display: flex;
+}

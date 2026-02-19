@@ -20,7 +20,7 @@ export function adminLogin(req, res) {
     const token = jwt.sign(
         {adminId: admin.id, email: admin.email},
         process.env.JWT_SECRET,
-        {expiresIn: "2h"}
+        {expiresIn: "1h"}
     );
 
     res.json({
