@@ -17,7 +17,7 @@ export default function Booking({
   function handleBooking(e) {
     e.preventDefault();
     setHasClicked(true);
-    fetch("http://localhost:3001/book", {
+    fetch(`${import.meta.env.VITE_API_URL}/book`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

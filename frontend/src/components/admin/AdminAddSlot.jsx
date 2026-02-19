@@ -8,7 +8,7 @@ export default function AddSlot() {
     e.preventDefault();
     const token = localStorage.getItem("adminToken");
 
-    fetch("http://localhost:3001/admin/slots", {
+    fetch(`${import.meta.env.VITE_API_URL}/admin/slots`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

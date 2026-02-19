@@ -7,7 +7,7 @@ export default function AdminSlots({setToDelete}) {
   function fetchSlots() {
     const token = localStorage.getItem("adminToken");
 
-    fetch("http://localhost:3001/admin/slots", {
+    fetch(`${import.meta.env.VITE_API_URL}/admin/slots`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     })

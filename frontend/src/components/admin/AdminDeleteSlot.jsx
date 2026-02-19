@@ -6,8 +6,7 @@ export default function DeleteSlot({toDelete, setToDelete}) {
   const handleDeleteSlotClick = () => {
     setLoading(true);
     const token = localStorage.getItem("adminToken");
-
-    fetch(`http://localhost:3001/admin/slots/${toDelete}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/admin/slots/${toDelete}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     })

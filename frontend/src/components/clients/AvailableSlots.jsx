@@ -9,7 +9,7 @@ export default function AvailableSlots() {
   const [choices, setChoices] = useState([]);
 
   function fetchSlots() {
-    fetch("http://localhost:3001/slots")
+    fetch(`${import.meta.env.VITE_API_URL}/slots`)
       .then((res) => res.json())
       .then((data) => {
         setSlots(data);
