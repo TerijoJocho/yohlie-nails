@@ -19,7 +19,6 @@ const PORT = process.env.PORT || 3001;
 
 // Middlewares
 //autorise toutes les req venant d'un autre domaine http(front react)
-const cors = require("cors");
 app.use(cors({
   origin: "https://yohlie-nails.netlify.app"
 }));
