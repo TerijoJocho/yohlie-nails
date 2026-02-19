@@ -10,16 +10,18 @@ export default function Admin() {
     !!localStorage.getItem("adminToken"),
   );
 
+  const [toDelete, setToDelete] = useState(0);
+
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center">
+    <div className="min-h-screen flex flex-col justify-start items-stretch text-[#1C0F13]">
       {!isLogged ? (
         <AdminLogin onLogin={() => setIsLogged(true)} />
       ) : (
         <>
           <WelcomeAdmin />
-          <GetSlots />
+          <GetSlots setToDelete={setToDelete}/>
           <AddSlot />
-          <DeleteSlot />
+          <DeleteSlot toDelete={toDelete} setToDelete={setToDelete}/>
           <AdminLogout onLogout={() => setIsLogged(false)} />
         </>
       )}

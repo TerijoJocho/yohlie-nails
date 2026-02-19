@@ -30,7 +30,6 @@ export default function AddSlot() {
 
         return res.json();
       })
-      .then((data) => console.log(data)) //log a effacer
       .catch((err) => console.log("Erreur fetch:", err));
 
     setDate("");
@@ -40,9 +39,9 @@ export default function AddSlot() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mt-4 flex flex-col gap-3 rounded-lg border border-gray-200 p-4"
+      className="m-4 flex flex-col gap-3 rounded-lg border border-[#EFC7E5] p-4"
     >
-      <label className="text-sm font-medium text-gray-700" htmlFor="date">
+      <label className="text-sm font-medium text-[#1C0F13]" htmlFor="date">
         Ajouter une date:
       </label>
       <input
@@ -53,7 +52,7 @@ export default function AddSlot() {
         className="rounded-md border border-gray-300 px-3 py-2 text-sm"
         required
       />
-      <label className="text-sm font-medium text-gray-700" htmlFor="time">
+      <label className="text-sm font-medium text-[#1C0F13]" htmlFor="time">
         Ajouter une heure:
       </label>
       <input
@@ -64,7 +63,7 @@ export default function AddSlot() {
         className="rounded-md border border-gray-300 px-3 py-2 text-sm"
         required
       />
-      <button className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800">
+      <button className="rounded-md bg-[#1C0F13] px-4 py-2 text-sm font-medium text-white hover:bg-[#85756E]">
         Ajouter
       </button>
     </form>

@@ -1,13 +1,22 @@
-import avatar from "../../assets/manucure-avatar.jpg";
+import imagesData from "../../data/images-data.js";
 
 export default function Info() {
-  return (
-    <header>
+  const imagesArr = imagesData.map((img) => {
+    return (
       <img
-        className="w-full rounded-b-none rounded-t-lg"
-        src={avatar}
+        key={img.id}
+        className="min-w-full w-full min-h-full h-full rounded-lg object-cover border border-[#EEB1D5]"
+        src={img.source}
         alt="A photo of well manucured hands"
       />
+    );
+  })
+
+  return (
+    <header>
+      <div className="flex gap-4 p-2 overflow-x-auto">
+      {imagesArr}
+      </div>
       <p className="mt-5 mb-0 text-center text-[25px] font-bold text-[#EEB1D5]">
         Yohlie Nails
       </p>

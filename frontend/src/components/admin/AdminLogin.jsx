@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Footer from "../clients/Footer.jsx";
 
 export default function AdminLogin({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -38,7 +39,7 @@ export default function AdminLogin({ onLogin }) {
           French Manucure at home
         </p>
       </header>
-      <form onSubmit={handleLogin} className="flex flex-col rounded-md text-[#1C0F13]">
+      <form onSubmit={handleLogin} className="flex flex-col rounded-md text-[#1C0F13] w-fit self-center">
         <label className="p-3 text-[18px] font-medium" htmlFor="email">
           Email
         </label>
@@ -63,7 +64,7 @@ export default function AdminLogin({ onLogin }) {
           id="password"
           name="password"
           type="password"
-          placeholder="mon-mot-de-passe"
+          placeholder="***************"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="mb-[30px] rounded-[4px] border border-[#DB7093] p-3 text-[18px]"
@@ -73,7 +74,7 @@ export default function AdminLogin({ onLogin }) {
         {error && <p className="text-red-500">{error}</p>}
 
         <button
-          className="mt-[1.8rem] rounded-[10px] border-0 bg-[#DB7093] p-3 text-[18px] text-white hover:cursor-pointer hover:bg-[#FFEFD5] hover:text-gray-500"
+          className="btn global-hover justify-center"
           type="submit"
         >
           Se connecter
