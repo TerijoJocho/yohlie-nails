@@ -19,8 +19,10 @@ const PORT = process.env.PORT || 3001;
 
 // Middlewares
 //autorise toutes les req venant d'un autre domaine http(front react)
+// app.use(cors());
 app.use(cors({
-  origin: "https://yohlie-nails.netlify.app"
+  origin: "https://yohlie-nails.netlify.app",
+  credentials: true,
 }));
 //transforme automatiquement le body des requêtes POST en objet JS ; json -> obj js
 app.use(express.json());
