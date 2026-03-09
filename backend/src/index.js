@@ -19,9 +19,20 @@ const PORT = process.env.PORT || 3001;
 
 // Middlewares
 //autorise toutes les req venant d'un autre domaine http(front react)
-// app.use(cors());
+const allowedOrigins = [
+  "https://yohlie-nails.netlify.app",     // prod
+  "http://localhost:5173",                // dev local Vite
+  "http://localhost:4173",                // preview vite build
+];
+
 app.use(cors({
-  origin: "https://yohlie-nails.netlify.app",
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 }));
 //transforme automatiquement le body des requêtes POST en objet JS ; json -> obj js

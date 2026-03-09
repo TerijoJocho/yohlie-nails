@@ -16,6 +16,7 @@ export default function Booking({
   const [confirmationMessage, setConfirmationMessage] = useState("");
   function handleBooking(e) {
     e.preventDefault();
+    // console.log(`Test id: ${slot.id}`);
     setHasClicked(true);
     fetch(`${import.meta.env.VITE_API_URL}/book`, {
       method: "POST",
