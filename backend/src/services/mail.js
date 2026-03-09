@@ -12,7 +12,7 @@ export async function sendBookingEmail({ client_name, client_email, client_choic
     "api-key": process.env.BREVO_API_KEY,
   };
 
-  await Promise.all([
+  const [resClient, resAdmin] = await Promise.all([
     // Email au client
     fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
@@ -37,4 +37,10 @@ export async function sendBookingEmail({ client_name, client_email, client_choic
       }),
     }),
   ]);
+  
+  const dataClient = await resClient.json();
+  const dataAdmin = await resAdmin.json();
+
+  console.log("Brevo client:", dataClient);
+  console.log("Brevo admin:", dataAdmin);
 }

@@ -52,7 +52,7 @@ export async function postBook(req, res) {
       date: formatDate(slot.date),
       time: slot.time,
     });
-    // console.log("Emails envoyés avec succès");
+    console.log("Emails envoyés avec succès");
   } catch (err) {
     console.log("Erreur email de confirmation:", err);
   }
