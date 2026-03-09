@@ -15,7 +15,7 @@ export async function postBook(req, res) {
   }
 
   // console.log("2. Avant SELECT slot");
-  // const slot = db.prepare("SELECT * FROM slots WHERE id = ?").get(id);
+  const slot = db.prepare("SELECT * FROM slots WHERE id = ?").get(id);
 
   // console.log("3. Slot trouvé:", slot);
 
